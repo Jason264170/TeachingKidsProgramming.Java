@@ -1,10 +1,13 @@
 package org.teachingkidsprogramming.recipes;
 
+import org.teachingextensions.logo.Tortoise;
+
 public class FourSquare
 {
   public static void main(String[] args)
   {
     //  Show the tortoise --#1
+    Tortoise.
     //  Make the tortoise move as fast as possible --#8
     //  Do the following 4 times --#9
     //      drawSquare (recipe below) --#7

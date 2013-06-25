@@ -1,39 +1,66 @@
 package org.teachingkidsprogramming.recipes;
 
+import org.teachingextensions.logo.Colors;
+import org.teachingextensions.logo.Turtle;
 
 public class TurtleTree
 {
   public static void main(String[] args)
   {
-    //    Make the tortoise go as fast as possible --#11
-    //    Turn the background black --#22
-    //    The current branch length = 60 --#1.2
-    //    drawBranch(recipe below) --#2
-    //    ------------- Recipe for drawBranch --#2
-    //        If the current branch length is greater than zero, do the rest of this recipe --#6
-    //        adjustColor --#16
-    //        ------------- Recipe for adjustColor --#16
-    //            A 10 pixel long branch is lime --#21
-    //            A 20 pixel long branch is forest green --#20
-    //            A 30 pixel long branch is dark green --#19
-    //            A 40 pixel long branch is olive --#18
-    //            A 50 pixel long branch is sienna --#15
-    //            A 60 pixel long branch is saddle brown --#14
-    //        ------------- End of adjustColor --#16
-    //        Move the tortoise the length of the current branch --#1.1
-    //        drawLowerBranches (recipe below) --#7
-    //        ------------- Recipe for drawLowerBranches --#7
-    //            Turn the Tortoise 30 degrees to the right --#3
-    //            drawShorterBranch (recipe below) --#9
-    //            ------------- Recipe for drawShorterBranch --#9
-    //                drawBranch (10 pixels shorter) --#4
-    //            ------------- End of drawShorterBranch recipe --#9
-    //            Turn the Tortoise 60 degrees to the left --#8
-    //            drawShorterBranch --#10
-    //            Turn the Tortoise 30 degrees to the right --#13
-    //            adjustColor --#17
-    //            Move the tortoise backward the length of the current branch --#12
-    //        ------------- End of drawLowerBranches recipe --#7
-    //    ------------- End of drawBranch recipe --#2
+    Turtle turtle = new Turtle();
+    turtle.setSpeed(10);
+    turtle.getBackgroundWindow().setBackground(Colors.Grays.Black);
+    int branchLength = 60;
+    drawBranch(turtle, branchLength);
+  }
+  private static void drawBranch(Turtle turtle, int branchLength)
+  {
+    if (0 < branchLength)
+    {
+      adjustColor(turtle, branchLength);
+      turtle.move(branchLength);
+      drawLowerBranches(turtle, branchLength);
+    }
+  }
+  private static void adjustColor(Turtle turtle, int branchLength)
+  {
+    if (branchLength == 10)
+    {
+      turtle.setPenColor(Colors.Greens.Lime);
+    }
+    if (branchLength == 20)
+    {
+      turtle.setPenColor(Colors.Greens.ForestGreen);
+    }
+    if (branchLength == 30)
+    {
+      turtle.setPenColor(Colors.Greens.DarkGreen);
+    }
+    if (branchLength == 40)
+    {
+      turtle.setPenColor(Colors.Greens.Olive);
+    }
+    if (branchLength == 50)
+    {
+      turtle.setPenColor(Colors.Browns.Sienna);
+    }
+    if (branchLength == 60)
+    {
+      turtle.setPenColor(Colors.Browns.SaddleBrown);
+    }
+  }
+  private static void drawLowerBranches(Turtle turtle, int branchLength)
+  {
+    turtle.turn(30);
+    drawShorterBranch(turtle, branchLength);
+    turtle.turn(-60);
+    drawShorterBranch(turtle, branchLength);
+    turtle.turn(30);
+    adjustColor(turtle, branchLength);
+    turtle.move(-branchLength);
+  }
+  private static void drawShorterBranch(Turtle turtle, int branchLength)
+  {
+    drawBranch(turtle, branchLength - 10);
   }
 }
